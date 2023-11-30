@@ -19,12 +19,21 @@ while true
 	if len(potato) > 2 then
 		third = potato[2]
 	end if
+	if first == "ssh" then
+		cred = sec.split("@")
+		user = cred[0]
+		pass = cred[1]
+		ip = third
+		shell = get_shell.connect_service(ip, 22, user, pass)
+		shell.start_terminal
+	end if
 	if first == "scan" then
 		get_shell.launch("/bin/nmap", sec)
 	end if
 	if first == "help" then
-		print("hack: [ip] [port]    remote hack someone")
-		print("scan: [ip]           check ports for hack command")
+		print("ssh [user@pass] [ip]    ssh connect")
+		print("hack: [ip] [port]       remote hack someone")
+		print("scan: [ip]              check ports for hack command")
 	else if first == "hack" then
 		ip = sec
 		port = third.val
