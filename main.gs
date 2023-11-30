@@ -1,6 +1,6 @@
-print("nameless OS but without 2fa and worse\n")
+print("Eclipe OS admin menu\n")
 while true
-	a = user_input("command>> ")
+	a = user_input("<b>command: ")
 	potato = a.split(" ")
 	metaxploit = include_lib("/lib/metaxploit.so")
 	ip = ""
@@ -10,19 +10,21 @@ while true
 		get_shell.launch("/bin/crack", pass)
 		shell.start_terminal
 	end function
-	for word in potato
-		if potato[0] then
-			first = potato[0]
-		end if
-		if potato[1] then
-			sec = potato[1]
-		end if
-		if potato[2] then
-			third = potato[2]
-		end if
-	end for
+	if len(potato) > 0 then
+		first = potato[0]
+	end if
+	if len(potato) > 1 then
+		sec = potato[1]
+	end if
+	if len(potato) > 2 then
+		third = potato[2]
+	end if
+	if first == "scan" then
+		get_shell.launch("/bin/nmap", sec)
+	end if
 	if first == "help" then
-		print("hack: remote hack someone")
+		print("hack: [ip] [port]    remote hack someone")
+		print("scan: [ip]           check ports for hack command")
 	else if first == "hack" then
 		ip = sec
 		port = third.val
