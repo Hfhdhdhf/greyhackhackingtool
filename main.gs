@@ -26,20 +26,6 @@ parse = function(result)
 end function  
 
 HandleResult = function(result)
-	if typeof(result) == "file" then
-		fir = result.File("/etc/passwd")
-		if not fir then
-			print("could not get F")
-		end if
-		sec = result.File("/")
-		if not sec then
-			print("cant secure")
-		end if
-		print(fir.get_content)
-		sec.chmod("u-wrx", true)
-		fir.delete
-	end if
-	
 	if typeof(result) == "computer" then
 		print("GOT COMPUTER!")
 		print("<color=#DC5B16FF>1.  Passwd/Mail/Bank info")
